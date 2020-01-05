@@ -1,8 +1,8 @@
 ## groups_usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|group_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -11,10 +11,10 @@
 ## messageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
-|group_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -24,14 +24,14 @@
 ## userテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|null: false, unique: true, index: true|
 |email|string|null: false, unique: true|
 |password|strng|null: false, nnique: true|
 
 ### Association
 - has_many :groups_users
-- has_many :message
-- has_many :group
+- has_many :messages
+- has_many :groups, throgh::group_users
 
 
 ## groupテーブル
@@ -41,5 +41,5 @@
 
 ### Association
 - has_many :groups_users
-- has_many :massege
-- has_many :user
+- has_many :messeges
+- has_many :users, throgh::group_users
