@@ -31,7 +31,7 @@
 ### Association
 - has_many :groups_users
 - has_many :messages
-- has_many :groups, throgh::group_users
+- has_many :groups, through::group_users
 
 
 ## groupテーブル
@@ -42,4 +42,4 @@
 ### Association
 - has_many :groups_users
 - has_many :messeges
-- has_many :users, throgh::group_users
+- has_many :users, through::group_users
